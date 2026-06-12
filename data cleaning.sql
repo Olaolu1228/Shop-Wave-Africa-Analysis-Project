@@ -28,7 +28,7 @@ HAVING COUNT(*) > 1;
 
 EXEC sp_help project_1
 
--- Check for null or missing values
+-- Checking for null or missing values
 
 SELECT * 
 FROM project_1
@@ -293,7 +293,7 @@ dominant_category AS (
     WHERE rn = 1
 )
 
--- Your original query goes here
+-- My original query goes here
 SELECT 
     e.order_id,
     e.product_id,
@@ -330,7 +330,7 @@ WHERE e.price < p.Q1 - 1.5 * (p.Q3 - p.Q1)
 
 ----------------------
 
--- STEP 1: First aggregate the counts
+-- STEP 1: i will First aggregate the counts
 WITH category_frequency AS (
     SELECT 
         product_id,
@@ -353,7 +353,7 @@ category_ranked AS (
     FROM category_frequency
 ),
 
--- STEP 3: Filter to only the dominant (rank 1) category
+-- STEP 3: i can filter to only the dominant category
 dominant_category AS (
     SELECT 
         product_id, 
@@ -362,7 +362,7 @@ dominant_category AS (
     WHERE rn = 1
 )
 
--- STEP 4: Join back to your main table
+-- STEP 4: i can then Join back to your main table
 SELECT 
     p.order_id,
     p.customer_id,
